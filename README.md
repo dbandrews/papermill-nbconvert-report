@@ -24,7 +24,9 @@ Can mix injecting parameters from command line, or YAML as needed.
 
 Using Git Bash on Windows/Linux:
 ```bash
-for region in USA Canada Mexico; do for year in 2019 2020 2021; do papermill template_report.ipynb -p location $region -f "configs/$year.yaml" | jupyter nbconvert --to webpdf --no-input --stdin --output "output/$region-$year"; done; done
+for region in USA Canada Mexico; do for year in 2019 2020 2021; do papermill template_report.ipynb - -p location $region -f "configs/$year.yaml" | jupyter nbconvert --to webpdf --no-input --stdin --output "output/$region-$year"; done; done
 ```
 
 This will output PDFs to `output/` directory.
+
+**Note: Currently nbconvert webpdf printing has an error ("I/O Operation on closed file"), this can be ignored as PDF's still render**
